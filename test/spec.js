@@ -15,4 +15,19 @@ describe('Our app', () => {
     expect(response.status).to.equal(200);
     expect(response.text).to.contain('Acme Movie API');
   });
+  describe('/api/', ()=>{
+    it('get /api/movies', async()=>{
+      const response= await testApp.get('/api/movies')
+      expect(response.status).to.equal(200)
+      expect(response.body.length).to.equal(4)
+    })
+
+    it('get /api/actors', async()=>{
+      const response= await testApp.get('/api/actors')
+      expect(response.status).to.equal(200)
+      expect(response.body.length).to.equal(5)
+    })
+  })
 });
+
+
