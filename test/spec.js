@@ -1,10 +1,12 @@
 const { expect } = require('chai');
 const supertest = require('supertest');
 const app = require('../app');
+const { syncAndSeed } = require('../db');
 
 const testApp = supertest(app);
 
 describe('Our app', () => {
+  beforeEach(() => syncAndSeed());
   it('can successfully run tests', () => {
     expect(1).to.equal(1);
   });
